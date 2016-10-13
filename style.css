@@ -1,0 +1,636 @@
+@charset "UTF-8";
+/******************************************************************
+Theme Name: Matium Playground
+Theme URI: http://playground.matium.jp/
+Author: Keita Watanabe
+Author URI: http://matium.jp/
+Version: 1.0
+
+License: WTFPL
+License URI: http://sam.zoy.org/wtfpl/
+Are You Serious? Yes.
+
+******************************************************************/
+/* ************************************
+ *
+ * SCSS Media Queries Mixins
+ * 
+ * Aauthor   : Ryuichi Nonaka
+ * Version   : 0.4.0
+ * Copyright : 2012 Ryuichi Nonaka
+ * Date      : 2012/11/16
+ *
+ * Released under the MIT license
+ *
+ *********************************** */
+/* ************************************
+ *
+ * Device Width 
+ * Initialize variables
+ *
+ *********************************** */
+/* ************************************
+ *
+ * Browser Prefix 
+ * Initialize variables
+ *
+ *********************************** */
+/* ************************************
+ *
+ * Return ratio
+ * Initialize variables
+ * @param $prefix prefix type
+ * @param $ratio device ratio
+ *
+ *********************************** */
+/* ************************************
+ *
+ * Mobile Device mixin
+ * @param $orientation Direction of a device
+ * @param $version [old|modern|future|any] The version of a device
+ * @param $add_orientation boolean [true|false] add orientation attribute
+ *
+ * old    : iPhone 3G or 3GS.
+ * modern : iPhone 4 or 4S.
+ * future : iPhone 5.
+ * any    : All version.
+ *
+ *********************************** */
+/* ************************************
+ *
+ * Tablet Device mixin
+ * @param $orientation Direction of a device
+ * @param $version [old|modern|any] The version of a device
+ * @param $add_orientation boolean [true|false] add orientation attribute
+ *
+ * old    : iPad 1 or 2 or mini.
+ * modern : new iPad (3).
+ * any    : All version.
+ *
+ *********************************** */
+/* ************************************
+ *
+ * Desctop Device mixin
+ * @param $size Direction of a device
+ * @param $version [modern|future|any] The version of a device
+ *
+ * Version modern ---------------------
+ * narrow  : max width 1024.
+ * modern  : max width 1280.
+ * wide    : max width 1600.
+ * hd      : max width 1920.
+ * over    : width 1920 over.
+ * ratio   : 1.0
+ *
+ * Version future ---------------------
+ * modern : max width 1280.
+ * wide   : max width 1440.
+ * ratio  : 2.0
+ *
+ *********************************** */
+/* ************************************
+ *
+ * Custom Device mixin
+ * @param $min_width number(px) Minimum device size
+ * @param $max_width number(px) Maximum device size
+ * @param $pixel_ratio number Device px ratio
+ * @param $add_orientation boolean [true|false] add orientation attribute
+ *
+ *********************************** */
+@import "https://fonts.googleapis.com/css?family=Open+Sans:400,600,700";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+.clearfix {
+  overflow: hidden;
+  *zoom: 1;
+}
+
+.legacy-clearfix {
+  *zoom: 1;
+}
+.legacy-clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.pie-clearfix {
+  *zoom: 1;
+}
+.pie-clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  height: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 11pt;
+  font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "Yu Gothic", "メイリオ",  Meiryo, Roboto, "Droid Sans", sans-serif;
+  line-height: 1.55em;
+  letter-spacing: 0.05em;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  color: #000;
+}
+
+a {
+  color: #3569c7;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  line-height: 1.7em;
+}
+
+article, aside, figure, figcaption, details, footer, header, hgroup, nav, section, summary {
+  display: block;
+}
+
+/*
+** フォントのインポート
+*/
+/* 游ゴシックが細くなる問題を解決する */
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Light");
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Light");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Bold");
+  font-weight: bold;
+}
+/*
+** Color List
+*/
+/*
+** Mixin
+*/
+/*
+ ** 共通要素
+*/
+/* ページラッパー */
+.page-wrapper {
+  width: 100%;
+}
+
+/* ヘッダー要素 */
+.header {
+  width: 100%;
+}
+.header .header-inner {
+  position: relative;
+  width: 100%;
+  padding-top: 112px;
+  padding-bottom: 52px;
+}
+
+/* メイン要素 */
+.contents-main {
+  width: 100%;
+  max-width: 1190px;
+  margin: 0 auto 0 auto;
+  /* トップページの時はパンくずメニューの分を空ける */
+  /* 記事一覧 */
+  /* 記事コンテンツ */
+  /* サイドバー */
+}
+.contents-main.index-main {
+  margin-top: 32px;
+}
+.contents-main .posts-wrapper {
+  width: 74.3%;
+  float: left;
+}
+.contents-main .article-wrapper {
+  width: 74.3%;
+  float: left;
+}
+.contents-main .sidebar {
+  width: 20.2%;
+  margin-left: 79.8%;
+}
+
+/*
+ ** ヘッダー
+*/
+.header-inner {
+  /* サイトタイトル */
+  /* サイト概要文 */
+  /* フォローボタン */
+}
+.header-inner #title-logo {
+  position: relative;
+  text-align: center;
+  width: 440px;
+  height: auto;
+  margin: 0 auto 0 auto;
+}
+.header-inner #title-logo img {
+  display: block;
+  width: 100%;
+}
+.header-inner .site-description {
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Gothic MB101 Regular","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Yu Gothic", Meiryo, Roboto, "Droid Sans", sans-serif;
+  font-weight: 300;
+  font-size: 9pt;
+  line-height: 1.7em;
+  letter-spacing: 0.14em;
+  margin-top: 16px;
+  padding-left: 1em;
+}
+.header-inner .sns-follows {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-align: right;
+}
+.header-inner .sns-follows a.sns-follow-btn {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  -moz-transition: all 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  -o-transition: all 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  -webkit-transition: all 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  transition: all 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+}
+.header-inner .sns-follows a.sns-follow-btn:hover {
+  -moz-transform: scale(1.4, 1.4);
+  -ms-transform: scale(1.4, 1.4);
+  -webkit-transform: scale(1.4, 1.4);
+  transform: scale(1.4, 1.4);
+}
+
+/*
+ ** 記事コンテンツ
+*/
+.post-container {
+  width: 100%;
+  margin-top: 60px;
+}
+.post-container:first-child {
+  margin-top: 0;
+}
+.post-container:last-child hr.dotted {
+  display: none;
+}
+.post-container .post {
+  width: 100%;
+}
+
+.post .post-eyecatch-image {
+  width: 100%;
+  margin-top: 0.5em;
+  margin-bottom: 24px;
+}
+.post .post-eyecatch-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.post .post-header {
+  width: 100%;
+}
+.post .post-header .post-title {
+  font-size: 23pt;
+  line-height: 1.4em;
+  letter-spacing: 0em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Open Sans', 'Gothic MB101 Demibold', 'ヒラギノ角ゴ ProN W6', 'Hiragino Kaku Gothic ProN', 'メイリオ', 'Yu Gothic', Meiryo, Roboto, "Droid Sans", sans-serif;
+  font-weight: 700;
+}
+.post .post-header .post-title a {
+  color: #000;
+}
+.post .post-header .post-title a:hover {
+  color: #3569c7;
+  text-decoration: none;
+}
+.post .post-header .published-date {
+  margin-top: 0.5em;
+  font-family: "Open Sans", "Gothic MB101 Medium","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Yu Gothic", Meiryo, Roboto, "Droid Sans", sans-serif;
+  font-weight: 400;
+  font-size: 9pt;
+}
+.post .post-content {
+  margin-top: 1.5em;
+}
+
+.archive-post-footer {
+  margin-top: 36px;
+  margin-bottom: 70px;
+}
+.archive-post-footer a.continue-link {
+  display: block;
+  width: 136px;
+  height: 36px;
+  font-size: 9pt;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 36px;
+  letter-spacing: 0em;
+  color: #000;
+  text-align: center;
+  border: 1px solid #000;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  float: left;
+}
+.archive-post-footer a.continue-link:hover {
+  color: #fff;
+  background-color: #3569c7;
+  text-decoration: none;
+  border-color: #3569c7;
+}
+.archive-post-footer a.comment-link {
+  display: block;
+  margin-left: 165px;
+  width: 136px;
+  height: 36px;
+  font-size: 9pt;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 36px;
+  letter-spacing: 0em;
+  color: #000;
+  padding-left: 24px;
+  background-image: url(images/icon-comment-balloon.svg);
+  background-repeat: no-repeat;
+  background-size: 14px 12px;
+  background-position: left center;
+}
+.archive-post-footer a.comment-link:hover {
+  color: #3569c7;
+  text-decoration: none;
+}
+
+/*
+ ** サイドバー
+*/
+.sidebar-item {
+  width: 100%;
+  font-size: 9pt;
+  line-height: 1.65em;
+  letter-spacing: 0.025em;
+  color: #444;
+  font-family: "Open Sans", "Gothic MB101 Regular","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Yu Gothic", Meiryo, Roboto, "Droid Sans", sans-serif;
+  font-weight: 400;
+  padding-bottom: 27px;
+}
+.sidebar-item .sidebar-title {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Open Sans', 'Gothic MB101 Demibold', 'ヒラギノ角ゴ ProN W6', 'Hiragino Kaku Gothic ProN', 'メイリオ', 'Yu Gothic', Meiryo, Roboto, "Droid Sans", sans-serif;
+  font-weight: 700;
+  font-size: 10pt;
+  margin-bottom: 1em;
+  color: #000;
+}
+.sidebar-item li {
+  margin-bottom: 0.85em;
+}
+.sidebar-item li a {
+  color: #444;
+}
+.sidebar-item li a:hover {
+  color: #3569c7;
+}
+.sidebar-item li ul.children {
+  margin-top: 0.85em;
+  margin-left: 1.5em;
+}
+.sidebar-item li ul.children li {
+  margin-bottom: 0.4em;
+}
+.sidebar-item li ul.children li:before {
+  content: "- ";
+}
+.sidebar-item.recent-entries li {
+  margin-bottom: 1em;
+}
+.sidebar-item.profile .author-photo {
+  width: 200px;
+  margin-bottom: 0.6em;
+}
+.sidebar-item.profile .author-photo img {
+  display: block;
+  width: 100%;
+}
+.sidebar-item.profile .author-name {
+  margin-bottom: 0.85em;
+}
+.sidebar-item.profile .follow-links {
+  margin-top: 1.25em;
+}
+.sidebar-item.profile .follow-links li {
+  margin-bottom: 0.5em;
+}
+.sidebar-item.profile .follow-links li a.profile-follow-btn {
+  display: block;
+  width: 140px;
+  height: 26px;
+  padding-left: 20px;
+  line-height: 27px;
+  text-align: center;
+  color: #fff;
+  font-family: "Open Sans", "Gothic MB101 Regular","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Yu Gothic", Meiryo, Roboto, "Droid Sans", sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  background-color: #474747;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  -moz-transition: all 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  -o-transition: all 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  -webkit-transition: all 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  transition: all 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+}
+.sidebar-item.profile .follow-links li a.profile-follow-btn:hover {
+  text-decoration: none;
+}
+.sidebar-item.profile .follow-links li a.profile-follow-btn.follow-ghub {
+  background-image: url(images/icon-github.svg);
+  background-repeat: no-repeat;
+  background-size: 17px 16px;
+  background-position: 7px center;
+}
+.sidebar-item.profile .follow-links li a.profile-follow-btn.follow-feedly {
+  background-color: #6fc45b;
+  background-image: url(images/icon-feedly.svg);
+  background-repeat: no-repeat;
+  background-size: 20px 17px;
+  background-position: 7px center;
+}
+.sidebar-item.profile .follow-links li a.profile-follow-btn.follow-tw {
+  background-color: #35abde;
+  background-image: url(images/icon-twitter.svg);
+  background-repeat: no-repeat;
+  background-size: 17px 15px;
+  background-position: 9px center;
+  padding-left: 18px;
+}
+.sidebar-item.profile .follow-links li a.profile-follow-btn.follow-fb {
+  background-color: #3c5c99;
+  background-image: url(images/icon-facebook.svg);
+  background-repeat: no-repeat;
+  background-size: 8px 16px;
+  background-position: 13px center;
+}
+.sidebar-item.profile .follow-links li a.profile-follow-btn:hover {
+  -moz-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+}
+.sidebar-item.sidebar-ad .sidebar-title {
+  margin-bottom: 0.5em;
+}
+.sidebar-item.sidebar-ad .ad-space {
+  width: 200px;
+  height: 200px;
+  background-color: #ddd;
+}
+
+/*
+ ** フッター
+*/
+.footer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 45px auto 0 auto;
+  padding-bottom: 45px;
+}
+.footer .footer-ad {
+  width: 100%;
+  max-width: 970px;
+  margin: 0 auto 65px auto;
+}
+.footer .footer-ad .subtitle {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Open Sans', 'Gothic MB101 Demibold', 'ヒラギノ角ゴ ProN W6', 'Hiragino Kaku Gothic ProN', 'メイリオ', 'Yu Gothic', Meiryo, Roboto, "Droid Sans", sans-serif;
+  font-weight: 700;
+  font-size: 10pt;
+  margin-bottom: 7px;
+}
+.footer .footer-ad .footer-ad-area {
+  width: 100%;
+  min-height: 90px;
+  background-color: #ddd;
+  height: auto;
+}
+.footer .copyright {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400px;
+  font-size: 9.5pt;
+  letter-spacing: 0em;
+}
+.footer .copyright .bold {
+  font-weight: 700;
+}
+
+/*
+ ** 区切り線
+*/
+hr.dotted {
+  border: none;
+  margin: 0 0 32px 0;
+  padding: 0;
+  height: 1px;
+  background-image: url(images/hr-dotted.png);
+  background-repeat: repeat-x;
+}
