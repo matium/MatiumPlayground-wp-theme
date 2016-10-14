@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html <?php language_attributes(); ?>>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,7 +9,13 @@
 	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
-	<title><?php wp_title(''); ?></title>
+	<title><?php 
+		if (is_home()) {
+			bloginfo('name');
+		} else {
+			wp_title('|', true, right);
+			bloginfo('name');
+		} ?></title>
 
 	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/library/images/apple-touch-icon.png">
 	<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
@@ -22,6 +28,12 @@
 
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
+	<!-- JS -->
+	<script src="<?php echo get_template_directory_uri() ?>/js/libs/jquery-2.1.3.min.js"></script>
+	<script src="<?php echo get_template_directory_uri() ?>/js/libs/jquery.easing.1.3.js"></script>
+	<script src="<?php echo get_template_directory_uri() ?>/js/libs/jquery.transit.min.js"></script>
+	<script src="<?php echo get_template_directory_uri() ?>/js/main.js"></script>
+
 
 	<?php wp_head(); ?>
 	<!-- Morisawa Clund Font -->
@@ -29,8 +41,15 @@
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.7&appId=1987502841475985";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 	<div class="page-wrapper">
-
 		<header class="header">
 			<div class="header-inner">
 			<?php if(is_home()) : ?>

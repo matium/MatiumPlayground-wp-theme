@@ -98,7 +98,7 @@ $sidebarTextColor: #444;
 
 /* メイン要素 */
 .contents-main {
-	width: 100%;
+	width: 94%;
 	max-width: 1190px;
 	margin: 0 auto 0 auto;
 
@@ -200,6 +200,11 @@ $sidebarTextColor: #444;
 }
 
 .post {
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
 	.post-eyecatch-image {
 		width: 100%;
 		margin-top: 0.5em;
@@ -216,6 +221,7 @@ $sidebarTextColor: #444;
 		width: 100%;
 
 		.post-title {
+			color: #000;
 			font-size: 23pt;
 			line-height: 1.4em;
 			letter-spacing: 0em;
