@@ -1,25 +1,45 @@
 /// <reference path="libs/jquery.d.ts" />
 /// <reference path="matiumpg/backtotop/BackToTop.ts" />
+/// <reference path="matiumpg/searchform/SearchFormUnit.ts" />
 
 namespace matiumpg {
 
 	import BackToTop = matiumpg.backtotop.BackToTop;
+	import SearchFormUnit = matiumpg.searchform.SearchFormUnit;
 
 	export class Main {
 
+		////// Public Properties: /////////////////////////
+		/**
+		 * ページの上に戻るボタン
+		 **/
 		public backButton: BackToTop;
+		/**
+		 * 検索フォーム表示ボタン
+		 **/
+		public searchButton: JQuery;
+		/**
+		 * 検索フォーム
+		 **/
+		public searchForm: SearchFormUnit;
+
+		////// Private Properties: /////////////////////////
 		protected resizeTimer;
+
 		
+
 		constructor() {
 			console.log("Main Construct");
 			this.backButton = new BackToTop();
+			this.searchButton = $('.search-button');
+			this.searchForm = new SearchFormUnit();
 		}
 
 		/**
 		 * 初期設定
 		 * コンテンツ全体のサイズやリサイズ処理が必要な
 		 * コンポーネント等のセッティングをする
-		*/
+		 **/
 		init = ():void => {
 			this.resize();
 
@@ -40,6 +60,10 @@ namespace matiumpg {
 				} else {
 					ref.backButton.hide();
 				}
+			});
+
+			this.searchButton.on('mouseover', ()=>{
+				this.searchForm.show();
 			});
 		}
 

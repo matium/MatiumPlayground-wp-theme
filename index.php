@@ -1,16 +1,16 @@
 <?php get_header(); ?>
 		<div class="contents-main index-main clearfix">
 
-			<div class="posts-wrapper" role="main">
+			<main class="posts-wrapper" role="main">
 				<?php
 				if ( have_posts() ) :
 					while ( have_posts() ) :
 						the_post();
-						get_template_part( 'archive-content' );
+						get_template_part( 'index-content' );
 					endwhile;
 				endif;
 				?>
-			</div><!-- End posts-wrapper -->
+			</main><!-- End posts-wrapper -->
 
 			<?php get_sidebar(); ?>
 

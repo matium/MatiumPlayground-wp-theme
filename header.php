@@ -67,6 +67,8 @@
 					<a class="sns-follow-btn follow-ghub" href="https://github.com/matium" title="Follow @matium"><img src="<?php echo get_template_directory_uri(); ?>/images/head-follow-ghub.svg" alt="Follow @matium"></a>				
 					<a class="sns-follow-btn follow-feedly" href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2F365letters.tokyo%2Ffeed%2F" title="Add Feedly" target="blank"><img src="<?php echo get_template_directory_uri(); ?>/images/head-follow-feedly.svg" alt="Add Feedly"></a>
 				</nav>
+				<a class="search-button" href="javascript:void(0);" title="検索する"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-search.svg" alt="検索する"></a>
 
 			</div><!-- End header-inner -->
+			<?php get_search_form(); ?>
 		</header><!-- End header -->

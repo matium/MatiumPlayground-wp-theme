@@ -34,7 +34,7 @@
 			<?php the_content(); ?>
 		</div>
 		<div class="article-footer-ad">
-			<h3 class="subtitle">スポンサードアド</h3>
+			<h3 class="subtitle">スポンサードリンク</h3>
 			<div class="ad-space"></div>
 		</div>
 		<div class="article-footer-socials">

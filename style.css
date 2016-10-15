@@ -300,6 +300,79 @@ a.BackToTop img {
   clear: both !important;
 }
 
+/* 検索フォーム */
+.SearchFormUnit {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 354px;
+  height: 60px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -moz-transform-origin: center center 0;
+  -webkit-transform-origin: center center 0;
+  transform-origin: center center 0;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -moz-transform: perspective(400px) rotateX(90deg) translateY(-20px);
+  -ms-transform: perspective(400px) rotateX(90deg) translateY(-20px);
+  -webkit-transform: perspective(400px) rotateX(90deg) translateY(-20px);
+  transform: perspective(400px) rotateX(90deg) translateY(-20px);
+}
+.SearchFormUnit .search-form {
+  position: relative;
+  background-color: #222;
+  width: 354px;
+  height: 60px;
+  padding: 7px 12px 0 0;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  border-radius: 6px;
+}
+.SearchFormUnit .search-form input.search-field {
+  display: block;
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  height: 26px;
+  width: 280px;
+  padding: 0 0.25em 0 0.25em;
+  font-size: 10pt;
+  line-height: 26px;
+  background-color: #eee;
+  border: 1px solid #fff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+}
+.SearchFormUnit .search-form input.search-field:-moz-placeholder {
+  color: #999;
+}
+.SearchFormUnit .search-form input.search-field::-moz-placeholder {
+  color: #999;
+}
+.SearchFormUnit .search-form input.search-field:-ms-input-placeholder {
+  color: #999;
+}
+.SearchFormUnit .search-form input.search-field::-webkit-input-placeholder {
+  color: #999;
+}
+.SearchFormUnit .search-form input.search-field:focus {
+  outline: 0;
+  background-color: #fff;
+}
+.SearchFormUnit .search-form input.search-submit {
+  display: block;
+  position: absolute;
+  top: 15px;
+  right: 16px;
+  width: 26px;
+  height: 26px;
+}
+
 /*
 ** フォントのインポート
 */
@@ -361,16 +434,13 @@ a.BackToTop img {
   margin: 0 auto 0 auto;
   /* トップページの時はパンくずメニューの分を空ける */
   /* 記事一覧 */
-  /* 記事コンテンツ */
   /* サイドバー */
 }
 .contents-main.index-main {
   margin-top: 32px;
 }
-.contents-main .posts-wrapper {
-  width: 74.3%;
-  float: left;
-}
+.contents-main .posts-wrapper,
+.contents-main .archive-wrapper,
 .contents-main .article-wrapper {
   width: 74.3%;
   float: left;
@@ -387,6 +457,7 @@ a.BackToTop img {
   /* サイトタイトル */
   /* サイト概要文 */
   /* フォローボタン */
+  /* 検索ボタン */
 }
 .header-inner #title-logo {
   position: relative;
@@ -414,7 +485,7 @@ a.BackToTop img {
 .header-inner .sns-follows {
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 65px;
   text-align: right;
 }
 .header-inner .sns-follows a.sns-follow-btn {
@@ -431,6 +502,19 @@ a.BackToTop img {
   -ms-transform: scale(1.4, 1.4);
   -webkit-transform: scale(1.4, 1.4);
   transform: scale(1.4, 1.4);
+}
+.header-inner a.search-button {
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 26px;
+  height: 26px;
+}
+.header-inner a.search-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /*
@@ -719,6 +803,135 @@ hr.dotted {
   background-repeat: repeat-x;
 }
 
+/*
+ ** アーカイブページのスタイル
+*/
+.archive-wrapper h1.archive-title {
+  padding: 0 0 0.5em 2.4em;
+  border-bottom: 1px solid #ccc;
+  font-family: "Open Sans", "Gothic MB101 Regular","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Yu Gothic", Meiryo, Roboto, "Droid Sans", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  color: #000;
+  background-image: url(images/icon-folder-black.svg);
+  background-size: 26px 19px;
+  background-repeat: no-repeat;
+}
+.archive-wrapper h1.archive-title.search-result-title {
+  padding-left: 2em;
+  background-image: url(images/icon-searchresult.svg);
+  background-size: 22px 22px;
+}
+.archive-wrapper h1.archive-title .archive-title-name {
+  display: inline-block;
+  font-size: 16pt;
+  margin-right: 0.5em;
+  letter-spacing: 0em;
+}
+.archive-wrapper h1.archive-title .archive-title-label {
+  display: inline-block;
+  font-size: 11.5pt;
+}
+.archive-wrapper .archive-post {
+  margin-top: 1.5em;
+}
+.archive-wrapper .archive-post .post {
+  display: table;
+  margin-bottom: 1.5em;
+}
+.archive-wrapper .archive-post .post .archive-post-left {
+  display: table-cell;
+  width: 136px;
+  height: 96px;
+}
+.archive-wrapper .archive-post .post .archive-post-content {
+  display: table-cell;
+  vertical-align: middle;
+}
+.archive-wrapper .archive-post .post .archive-post-right {
+  display: table-cell;
+  width: 100px;
+  vertical-align: middle;
+}
+.archive-wrapper .archive-post hr.dotted {
+  margin-bottom: 0;
+}
+.archive-wrapper .archive-post:last-child hr.dotted {
+  display: block;
+}
+
+/* アーカイブ表示時の投稿アイテム */
+.archive-post {
+  /* 右（続きを読むボタン） */
+}
+.archive-post .archive-post-left .post-eyecatch-image {
+  display: block;
+  width: 136px;
+  height: 96px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #c5c5c5;
+  background-image: url(images/no-thumb-image2.png);
+  background-size: 136px 96px;
+  background-repeat: no-repeat;
+}
+.archive-post .archive-post-left .post-eyecatch-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: -20px;
+}
+.archive-post .archive-post-content {
+  padding-left: 2%;
+  padding-right: 2.5%;
+}
+.archive-post .archive-post-content .post-title {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Open Sans', 'Gothic MB101 Demibold', 'ヒラギノ角ゴ ProN W6', 'Hiragino Kaku Gothic ProN', 'メイリオ', 'Yu Gothic', Meiryo, Roboto, "Droid Sans", sans-serif;
+  font-weight: 700;
+  font-size: 17pt;
+  letter-spacing: 0;
+  line-height: 1.3em;
+}
+.archive-post .archive-post-content .post-title a {
+  color: #000;
+}
+.archive-post .archive-post-content .post-title a:hover {
+  color: #3569c7;
+}
+.archive-post .archive-post-content .published-date {
+  margin-top: 0.2em;
+  font-family: "Open Sans", "Gothic MB101 Medium","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Yu Gothic", Meiryo, Roboto, "Droid Sans", sans-serif;
+  font-weight: 400;
+  font-size: 9pt;
+}
+.archive-post .archive-post-right a.continue-link {
+  display: block;
+  width: 100px;
+  height: 36px;
+  font-size: 9pt;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 36px;
+  letter-spacing: 0em;
+  color: #000;
+  text-align: center;
+  border: 1px solid #000;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  float: left;
+}
+.archive-post .archive-post-right a.continue-link:hover {
+  color: #fff;
+  background-color: #3569c7;
+  text-decoration: none;
+  border-color: #3569c7;
+}
+
+/*
+ ** 記事ページのスタイル
+*/
 /* 記事ページのときはサイドバーをパンくずリストの分だけ下げる */
 .contents-main.article-main .sidebar {
   margin-top: 50px;
@@ -974,7 +1187,7 @@ hr.dotted {
 .article-footer-info .post-categories li {
   display: inline-block;
   margin-right: 0.7em;
-  font-family: "Open Sans", "Gothic MB101 Medium","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Yu Gothic", Meiryo, Roboto, "Droid Sans", sans-serif;
+  font-family: "Open Sans", "Gothic MB101 Regular","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Yu Gothic", Meiryo, Roboto, "Droid Sans", sans-serif;
   font-weight: 400;
   font-size: 11.5pt;
   letter-spacing: 0em;

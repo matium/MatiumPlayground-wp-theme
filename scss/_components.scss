@@ -72,3 +72,60 @@ a.BackToTop {
 }
 
 
+/* 検索フォーム */
+.SearchFormUnit {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	width: 354px;
+	height: 60px;
+	@include opacity(0);
+	@include transform-origin( center, center, 0 );
+	@include transform-style(preserve-3d);
+	@include transform(perspective(400px) rotateX(90deg) translateY(-20px));
+
+
+	.search-form {
+		position: relative;
+		background-color: #222;
+		width: 354px;
+		height: 60px;
+		padding: 7px 12px 0 0;
+		@include borderRadius(6px);
+
+		input.search-field {
+			display: block;
+			position: absolute;
+			top: 15px;
+			left: 20px;
+			height: 26px;
+			width: 280px;
+			padding: 0 0.25em 0 0.25em;
+			font-size: 10pt;
+			line-height: 26px;
+			background-color: #eee;
+			border: 1px solid #fff;
+			@include borderRadius(2px);
+
+			@include input-placeholder {
+				color: #999;
+			}
+
+			&:focus {
+				outline: 0;
+				background-color: #fff;
+			}
+		}
+
+		input.search-submit {
+			display: block;
+			position: absolute;
+			top: 15px;
+			right: 16px;
+			width: 26px;
+			height: 26px;
+		}
+	}
+}
+
+

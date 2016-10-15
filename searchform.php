@@ -1,8 +1,8 @@
-<form role="search" method="get" id="searchform" class="searchform" action="<?php echo home_url( '/' ); ?>">
-    <div>
-        <label for="s" class="screen-reader-text"><?php _e('Search for:','bonestheme'); ?></label>
-        <input type="search" id="s" name="s" value="" />
-
-        <button type="submit" id="searchsubmit" ><?php _e('Search','bonestheme'); ?></button>
-    </div>
-</form>
+<div class="SearchFormUnit">
+	<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+		<label>
+			<input type="search" class="search-field" placeholder="<?php echo esc_attr_x( 'Search …', 'placeholder' ) ?>" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
+		</label>
+		<input type="image" class="search-submit" src="<?php echo get_template_directory_uri(); ?>/images/icon-search-white.svg" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>" />
+	</form>
+</div>
