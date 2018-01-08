@@ -14,5 +14,7 @@
 
 			<?php get_sidebar(); ?>
 
+			<?php get_template_part( 'smp-header' ); ?>
 		</div><!-- End contents-main -->
+<?php get_template_part( 'pagenavi' ); ?>
 <?php get_footer(); ?>

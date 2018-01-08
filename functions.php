@@ -1,6 +1,33 @@
 <?php
+/**
+ * Used Theme Name: Matium Playground Theme
+ * Theme URI: http://play.matium.jp/
+ * Author: Keita Watanabe
+ * Last Update: 2017/09/09
+ */
 
+/**
+ * アイキャッチ画像の対応
+ */
 add_theme_support('post-thumbnails');
+
+/**
+ * アイキャッチ画像の定義と切り抜き
+ **/
+add_action( 'after_setup_theme', 'image_sizes_customize' );
+function image_sizes_customize() {
+	add_image_size('thumbnail-128', 128, 86 ,true );
+	add_image_size('thumbnail-300', 300, 200, true );
+	add_image_size('thumbnail-600', 600, 400, true );
+	add_image_size('thumbnail-1000', 1000, 667, true );
+}
+
+
+/**
+ * 検索フォームをHTML5対応
+ */
+add_theme_support( 'html5', array( 'search-form' ) );
+
 
 function custom_excerpt_length( $length ) {
      return 200;	

@@ -1,0 +1,468 @@
+@charset "utf-8";
+
+/* ページのTOPに戻る */
+a.BackToTop {
+	position: fixed;
+	width: 52px;
+	height: 52px;
+	bottom: 15px;
+	right: 15px;
+	z-index: 1;
+	border: 3px solid #fff;
+	background-color: rgba(255, 255, 255, 0.75);
+	@include opacity(0);
+	@include borderRadius(26px);
+	@include box-shadow(rgba(0, 0, 0, 0.25) 0px 0px 10px);
+	@include transition(all, 1s, ceaser($easeOutQuart));
+
+	/* Desktop Only */
+	@media only screen and ( min-width: $tabletMaxWidth+1 ) {
+		&:hover {
+			background-color: rgba(255, 255, 255, 1.0);
+			@include scale(1.25);
+			@include borderRadius(34px);
+		}
+	}
+
+	img {
+		display: block;
+		position: absolute;
+		width: 24px;
+		height: 15px;
+		top: 50%;
+		left: 50%;
+		margin-left: -12px;
+		margin-top: -8px;
+	}
+}
+
+
+/* SNS Buttons */
+.wp_social_bookmarking_light{
+	border: 0 !important;
+	padding: 0 0 0 0 !important;
+	margin: 0 0 0 0 !important;
+
+	div {
+		float: left !important;
+		border: 0 !important;
+		padding: 0 !important;
+		margin: 0 10px 0px 0 !important;
+		min-height: 30px !important;
+		line-height: 18px !important;
+		text-indent: 0 !important;
+
+		&.wsbl_pocket {
+			margin-right: 0 !important;
+		}
+	}
+
+	img {
+		border: 0 !important;
+		padding: 0;
+		margin: 0;
+		vertical-align: top !important;
+	}
+
+	@include mq-custom(320px, 767px) {
+		margin-top: 14px !important;
+	}
+}
+.wp_social_bookmarking_light_clear{
+	clear: both !important;
+}
+
+
+/* 検索フォーム */
+.SearchFormUnit {
+	position: absolute;
+	z-index: 2;
+	top: 6px;
+	right: 6px;
+	width: 354px;
+	height: 60px;
+	@include opacity(0);
+	@include transform-origin( center, center, 0 );
+	@include transform-style(preserve-3d);
+	@include transform(perspective(400px) rotateX(90deg) translateY(-20px));
+	/* SMP */
+	@include mq-custom($smpMinWidth, $smpMaxWidth) {
+		width: 308px;
+	}
+
+
+	.search-form {
+		position: relative;
+		background-color: #222;
+		width: 354px;
+		height: 60px;
+		padding: 7px 12px 0 0;
+		@include borderRadius(6px);
+		/* SMP */
+		@include mq-custom($smpMinWidth, $smpMaxWidth) {
+			width: 100%;
+		}
+
+		input.search-field {
+			display: block;
+			position: absolute;
+			top: 15px;
+			left: 20px;
+			height: 26px;
+			width: 280px;
+			padding: 0 0.25em 0 0.25em;
+			font-size: 10pt;
+			line-height: 26px;
+			background-color: #eee;
+			border: 1px solid #fff;
+			@include borderRadius(2px);
+
+			@include input-placeholder {
+				color: #999;
+			}
+
+			&:focus {
+				outline: 0;
+				background-color: #fff;
+			}
+
+			/* SMP */
+			@include mq-custom($smpMinWidth, $smpMaxWidth) {
+				width: 234px;
+			}
+		}
+
+		input.search-submit {
+			display: block;
+			position: absolute;
+			top: 15px;
+			right: 16px;
+			width: 26px;
+			height: 26px;
+		}
+	}
+}
+
+/*
+ ** 区切り線
+*/
+hr.dotted {
+	border: none;
+	margin: 0 0 32px 0;
+	padding: 0;
+	height: 1px;
+	background-image: url(images/hr-dotted.png);
+	background-repeat: repeat-x;
+}
+
+/* コンテンツカバー */
+.ContentsCover {
+	position: fixed;
+	display: none;
+	z-index: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	@include opacity(0);
+}
+
+/* ページナビゲーション */
+.page-nav {
+	width: 94%;
+	max-width: 1190px;
+	margin: 0 auto 0 auto;
+
+	hr.dotted {
+		margin-bottom: 30px;
+	}
+
+	.wp-pagenavi {
+		width: 100%;
+	}
+}
+
+/* 投稿記事ページのページナビゲーション */
+.article-page-nav {
+	width: 100%;
+	margin-bottom: 3.2em;
+
+	@include mq-custom($smpMinWidth, $smpMaxWidth) {
+		width: $smpContentWidth;
+		margin: 0 auto 3em auto;
+	}
+
+	hr.navi-border {
+		margin-bottom: 0;
+	}
+
+	.nextprev-navi {
+		width: 100%;
+		margin-bottom: 22px;
+	}
+
+	.pagelink-navi {
+		width: 100%;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+}
+
+/* wp-pagenaviで表示されたページナビゲーションのUI */
+.wp-pagenavi {
+	@include display-flex;
+	@include align-items(center);
+	@include justify-content(center);
+
+	span,
+	a {
+		display: block;
+		width: 32px;
+		height: 32px;
+		border: 1px solid $textColor;
+		color: $textColor;
+		background-color: #fff;
+		margin: 0 5px 0 5px;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 12.5pt;
+		text-align: center;
+		line-height: 32px;
+		text-decoration: none;
+	}
+
+	a {
+		/* Desktop Only */
+		@media only screen and ( min-width: $tabletMaxWidth+1 ) {
+			&:hover {
+				border-color: $linkBlue;
+				background-color: $linkBlue;
+				color: #fff;
+			}
+		}
+	}
+
+	.current {
+		background-color: $textColor;
+		color: #fff;
+	}
+}
+
+/* 投稿記事ページのページナビゲーションUI／前後ページリンク */
+.nextprev-navi {
+	@include display-flex;
+	@include align-items(center);
+	@include justify-content(center);
+
+	a {
+		@include display-flex;
+		@include align-items(center);
+		@include justify-content(center);
+		width: 192px;
+		height: 44px;
+		border: 1px solid $textColor;
+		@include fontSubtitle;
+		font-size: 13pt;
+		text-decoration: none;
+		color: $textColor;
+		margin: 0 8px 0 8px;
+
+		@include mq-custom($smpMinWidth, $smpMaxWidth) {
+			width: 164px;
+			font-size: 12pt;
+			margin: 0 5px 0 5px;
+		}
+
+		.label {
+			display: block;
+			line-height: 1em;
+		}
+
+		.label-next {
+			padding-right: 1.2em;
+			margin-left: 0.3em;
+			background-image: url('images/arrow-next-blue.svg');
+			background-size: 9px 13px;
+			background-repeat: no-repeat;
+			background-position: right center;
+		}
+
+		.label-prev {
+			padding-left: 1.2em;
+			margin-right: 0.3em;
+			background-image: url('images/arrow-prev-blue.svg');
+			background-size: 9px 13px;
+			background-repeat: no-repeat;
+			background-position: left center;
+		}
+
+		/* Desktop Only */
+		@media only screen and ( min-width: $tabletMaxWidth+1 ) {
+			&:hover {
+				border-color: $linkBlue;
+				background-color: $linkBlue;
+				color: #fff;
+
+				.label-next {
+					background-image: url('images/arrow-next-wh.svg');
+				}
+
+				.label-prev {
+					background-image: url('images/arrow-prev-wh.svg');
+				}
+			}
+		}
+	}
+}
+
+/* 投稿記事ページのページナビゲーションUI／ページリンク */
+.pagelink-navi {
+	@include display-flex;
+	@include align-items(center);
+	@include justify-content(center);
+
+	span.label {
+		display: block;
+		width: 32px;
+		height: 32px;
+		border: 1px solid $textColor;
+		color: #fff;
+		background-color: $textColor;
+		margin: 0 5px 0 5px;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 12.5pt;
+		text-align: center;
+		line-height: 30px;
+		text-decoration: none;
+	}
+
+	a {
+		display: block;
+		margin: 0 5px 0 5px;
+
+		span.label {
+			background-color: #fff;
+			color: $textColor;
+			margin: 0;
+		}
+
+		/* Desktop Only */
+		@media only screen and ( min-width: $tabletMaxWidth+1 ) {
+			&:hover {
+				span.label {
+					border-color: $linkBlue;
+					background-color: $linkBlue;
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+
+/* 投稿記事ページのヘッダーエリアにあるページナビゲーション */
+.article-header-page-nav {
+	width: 100%;
+	@include display-flex;
+	@include flex-direction(row-reverse);
+	@include align-items(center);
+	@include justify-content(space-between);
+	padding: 15px 0 15px 0;
+	border-bottom: 1px solid #ccc;
+
+	@include mq-custom($smpMinWidth, $smpMaxWidth) {
+		@include justify-content(center);
+		width: $smpContentWidth;
+		margin: 0 auto 0 auto;
+	}
+
+	.nextprev-navi {
+		@include mq-custom($smpMinWidth, $smpMaxWidth) {
+			display: none;
+		}
+		a {
+			width: auto;
+			height: 1em;
+			line-height: 1em;
+			border: none;
+			background: none;
+			color: $textColor;
+			font-size: 11pt;
+			margin: 0 0.5em 0 1.5em;
+
+			.label-next {
+				padding-right: 1em;
+				margin-left: 0;
+				background-image: url('images/arrow-next-blue.svg');
+				background-size: 7px 10px;
+				background-repeat: no-repeat;
+				background-position: right center;
+			}
+
+			.label-prev {
+				padding-left: 1em;
+				margin-right: 0;
+				background-image: url('images/arrow-prev-blue.svg');
+				background-size: 7px 10px;
+				background-repeat: no-repeat;
+				background-position: left center;
+			}
+
+			/* Desktop Only */
+			@media only screen and ( min-width: $tabletMaxWidth+1 ) {
+				&:hover {
+					color: $linkBlue;
+
+					.label-next {
+						background-image: url('images/arrow-next-blue.svg');
+					}
+
+					.label-prev {
+						background-image: url('images/arrow-prev-blue.svg');
+					}
+				}
+			}
+		}
+	}
+
+	.pagelink-navi {
+		span.label {
+			border: 1px solid #ccc;
+		}
+	}
+}
+
+
+/* リンクボタン */
+a.LinkButton {
+	display: inline-block;
+	padding: 1em 2.5em 1em 1.25em;
+	background-color: #fff;
+	color: $textColor;
+	@include fontSubtitle;
+	font-size: 13pt;
+	line-height: 1.4em;
+	text-align: center;
+	border: 1px solid #ccc;
+	background-image: url('images/arrow-next-blue.svg');
+	background-repeat: no-repeat;
+	background-position: right 14px center;
+	background-size: 9px 15px;
+
+	@include mq-custom($smpMinWidth, $smpMaxWidth) {
+		font-size: 12pt;
+		display: block;
+		width: 100%;
+		margin: 0 auto 0 auto;
+	}
+
+	/* Desktop Only */
+	@media only screen and ( min-width: $tabletMaxWidth+1 ) {
+		&:hover {
+			color: #fff;
+			background-color: $linkBlue;
+			text-decoration: none;
+			border-color: $linkBlue;
+			background-image: url('images/arrow-next-wh.svg');
+		}
+	}
+}

@@ -10,8 +10,8 @@
 </svg>
 
 			</a>&nbsp;>
-			<?php $cat = get_the_category(); echo get_category_parents($cat[0], true, ''); ?>
-			<span class="breadcrumb-pagetitle">>&nbsp;<?php the_title(''); ?></span>
+			<?php $cat = get_the_category(); echo get_category_parents($cat[0], true, '&nbsp;>&nbsp;'); ?>
+			<span class="breadcrumb-pagetitle"><?php the_title(''); ?></span>
 		</nav>
 	</div>
 	<div class="post single-post">
@@ -30,12 +30,33 @@
 			</div>
 			<?php add_social_buttons(); ?>
 		</div>
+
+		<?php get_template_part('single-header-pagenavi'); ?>
+
 		<div class="post-content">
 			<?php the_content(); ?>
 		</div>
+		<!-- Page Navigation -->
+		<?php
+		$paged = $wp_query->get( 'paged' );
+		if ( $paged < 1 )
+		{
+			get_template_part('single-pagenavi');
+		}
+		?>
 		<div class="article-footer-ad">
 			<h3 class="subtitle">スポンサードリンク</h3>
-			<div class="ad-space"></div>
+			<div class="ad-space">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- MatiumPG-ArticleAd300x250 -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:300px;height:250px"
+				     data-ad-client="ca-pub-1582453568063585"
+				     data-ad-slot="9366557087"></ins>
+				<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
 		</div>
 		<div class="article-footer-socials">
 			<?php add_social_buttons(); ?>

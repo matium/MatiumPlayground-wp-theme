@@ -15,6 +15,7 @@ namespace matiumpg.searchform {
 		 * 対象となる検索フォーム部分のDOM（jQueryオブジェクト）
 		 **/
 		public target:JQuery;
+		public cover: JQuery;
 
 		
 		////// Private Properties: /////////////////////////
@@ -27,6 +28,8 @@ namespace matiumpg.searchform {
 			super();
 			this.target = $('.SearchFormUnit');
 			this.target.hide();
+			this.cover = $('.ContentsCover');
+			this.cover.hide();
 		}
 
 		reset = ():void => {
@@ -36,6 +39,7 @@ namespace matiumpg.searchform {
 				translateY: '-20px',
 				opacity: 0
 			});
+			this.cover.hide();
 		}
 
 		/**
@@ -46,9 +50,12 @@ namespace matiumpg.searchform {
 
 			this.isShow = true;
 			this.target.show();
+			this.cover.show();
+			// PCの時はフォームからマウスが外れたら非表示／それ以外はカバーをタップして非表示
 			this.target.bind('mouseleave', ()=>{
 				this.hide();
 			});
+
 			this.target.stop();
 			this.target.transition({
 				perspective: '400px',
@@ -56,7 +63,7 @@ namespace matiumpg.searchform {
 				translateY: '0px',
 				opacity: 1.0
 			}, 600, 'easeOutCirc', () => {
-				var ev:CustomEvent = new CustomEvent(CustomEvent.SHOW);
+				let ev:CustomEvent = new CustomEvent(CustomEvent.SHOW);
 				this.dispatchEvent(ev);
 				this.onShow();
 			});
@@ -80,6 +87,7 @@ namespace matiumpg.searchform {
 
 			this.isShow = false;
 			this.target.unbind('mouseleave');
+			this.cover.unbind('click');
 			this.target.stop();
 			this.target.transition({
 				perspective: '400px',
@@ -88,7 +96,7 @@ namespace matiumpg.searchform {
 				opacity: 0
 			}, 200, 'linear', () => {
 
-				var ev:CustomEvent = new CustomEvent(CustomEvent.HIDE);
+				let ev:CustomEvent = new CustomEvent(CustomEvent.HIDE);
 				this.dispatchEvent(ev);
 
 				this.reset();

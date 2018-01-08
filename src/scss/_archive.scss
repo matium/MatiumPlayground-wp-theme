@@ -33,34 +33,65 @@
 			display: inline-block;
 			font-size: 11.5pt;
 		}
+
+		/* SMP */
+		@include mq-custom($smpMinWidth, $smpMaxWidth) {
+			width: $smpContentWidth;
+			margin: 0 auto 0 auto;
+		}
 	}
 
 	.archive-post {
 		margin-top: 1.5em;
+		/* SMP */
+		@include mq-custom($smpMinWidth, $smpMaxWidth) {
+			width: $smpContentWidth;
+			margin-left: auto;
+			margin-right: auto;
+		}
 		.post {
-			display: table;
+			@include display-flex();
+			@include align-items(center);
+			@include justify-content(space-between);
 			margin-bottom: 1.5em;
 
 			.archive-post-left {
-				display: table-cell;
 				width: 136px;
-				height: 96px;
+				height: auto;
+				@include flex(0 1 136px);
 			}
 
 			.archive-post-content {
-				display: table-cell;
-				vertical-align: middle;
+				width: auto;
+				@include flex(1 1 0);
 			}
 
 			.archive-post-right {
-				display: table-cell;
 				width: 100px;
-				vertical-align: middle;
+				@include flex(0 1 100px);
+			}
+
+			/* SMP */
+			@include mq-custom($smpMinWidth, $smpMaxWidth) {
+				@include flex-wrap(wrap);
+				@include align-items(flex-start);
+				.archive-post-left {
+					width: 34%;
+				}
+				.archive-post-content {
+					width: 63%;
+				}
+				.archive-post-right {
+					display: none;
+				}
 			}
 		}
 
 		hr.dotted {
 			margin-bottom: 0;
+			@include mq-custom($smpMinWidth, $smpMaxWidth) {
+				width: 100%;
+			}
 		}
 
 		&:last-child {
@@ -79,21 +110,34 @@
 
 		.post-eyecatch-image {
 			display: block;
-			width: 136px;
-			height: 96px;
+			position: relative;
+			width: 100%;
+			padding-top: 70.59%;
 			margin: 0;
 			overflow: hidden;
 			border: 1px solid #c5c5c5;
 			background-image: url(images/no-thumb-image2.png);
-			background-size: 136px 96px;
+			background-size: cover;
 			background-repeat: no-repeat;
+
+			a {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
 
 
 			img {
 				display: block;
+				position: absolute;
+				top: 50%;
+				left: 50%;
 				width: 100%;
 				height: auto;
-				margin-top: -20px;
+				@include translate(-50%, -50%);
 			}
 		}
 	}
@@ -102,6 +146,11 @@
 	.archive-post-content {
 		padding-left: 2%;
 		padding-right: 2.5%;
+		/* SMP */
+		@include mq-custom($smpMinWidth, $smpMaxWidth) {
+			padding-left: 3%;
+			padding-right: 0;
+		}
 		.post-title {
 			@include fontSubtitle();
 			font-size: 17pt;
@@ -114,6 +163,10 @@
 				&:hover {
 					color: $linkBlue;
 				}
+			}
+			/* SMP */
+			@include mq-custom($smpMinWidth, $smpMaxWidth) {
+				font-size: 13pt;
 			}
 		}
 

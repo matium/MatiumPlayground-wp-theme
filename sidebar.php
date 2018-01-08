@@ -25,7 +25,7 @@
 					<p class="profile-text">東京でWebサイトを作ったり、アプリ作ったり、UI作ったりして生活してます。</p>
 					<ul class="follow-links">
 						<li><a class="profile-follow-btn follow-ghub" href="https://github.com/matium" title="Follow @matium" target="_blank">Follow @matium</a></li>
-						<li><a class="profile-follow-btn follow-feedly" href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2F365letters.tokyo%2Ffeed%2F" title="Follow This Blog" target="_blank">Follow This Blog</a></li>
+						<li><a class="profile-follow-btn follow-feedly" href="https://feedly.com/i/subscription/feed/http://play.matium.jp/feed" title="Follow This Blog" target="_blank">Follow This Blog</a></li>
 						<li><a class="profile-follow-btn follow-tw" href="https://twitter.com/matium" title="Follow @matium" target="_blank">フォローする</a></li>
 						<li><a class="profile-follow-btn follow-fb" href="https://www.facebook.com/matium.fb" title="Follow Facebookページ" target="_blank">Facebookページ</a></li>
 					</ul>
@@ -55,7 +55,17 @@
 
 				<div class="sidebar-item sidebar-ad">
 					<h3 class="sidebar-title">スポンサードリンク</h3>
-					<div class="ad-space"></div>
+					<div class="ad-space">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- MatiumPG-SidebarAd200x200 -->
+						<ins class="adsbygoogle"
+						     style="display:inline-block;width:200px;height:200px"
+						     data-ad-client="ca-pub-1582453568063585"
+						     data-ad-slot="4705666469"></ins>
+						<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
 				</div>
 
 			</aside>

@@ -3,6 +3,16 @@
 <html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83808794-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-83808794-2');
+	</script>
+
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="HandheldFriendly" content="True">
@@ -32,6 +42,7 @@
 	<script src="<?php echo get_template_directory_uri() ?>/js/libs/jquery-2.1.3.min.js"></script>
 	<script src="<?php echo get_template_directory_uri() ?>/js/libs/jquery.easing.1.3.js"></script>
 	<script src="<?php echo get_template_directory_uri() ?>/js/libs/jquery.transit.min.js"></script>
+	<script src="<?php echo get_template_directory_uri() ?>/js/libs/jquery.waypoints.min.js"></script>
 	<script src="<?php echo get_template_directory_uri() ?>/js/main.js"></script>
 
 
@@ -53,19 +64,19 @@
 		<header class="header">
 			<div class="header-inner">
 			<?php if(is_home()) : ?>
-				<h1 id="title-logo" class="site-title"><img src="<?php echo get_template_directory_uri(); ?>/images/titlelogo.svg" alt="<?php bloginfo( 'name' ); ?>"></h1>
+				<h1 id="title-logo" class="site-title"><?php bloginfo( 'name' ); ?></h1>
 			<?php else : ?>
-				<p id="title-logo" class="site-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><img src="<?php echo get_template_directory_uri(); ?>/images/titlelogo.svg" alt="<?php bloginfo( 'name' ); ?>"></a></p>
+				<a id="title-logo" class="site-title" href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo( 'name' ); ?></a>
 			<?php endif; ?>
 
 				<p class="site-description">matium.jpの制作ノート。WebやUI/UXデザインの技術メモの他、<br />インタラクティブ表現のネタなどを書き溜めるブログです。</p>
 
 				<!-- Follow Buttons SNS -->
 				<nav class="sns-follows">
-					<a class="sns-follow-btn follow-fb" href="https://www.facebook.com/matium.fb" title="Follow Facebook Page"><img src="<?php echo get_template_directory_uri(); ?>/images/head-follow-fb.svg" alt="Follow Facebook Page"></a>
-					<a class="sns-follow-btn follow-tw" href="https://twitter.com/matium" title="Follow @matium"><img src="<?php echo get_template_directory_uri(); ?>/images/head-follow-tw.svg" alt="Follow @matium"></a>
-					<a class="sns-follow-btn follow-ghub" href="https://github.com/matium" title="Follow @matium"><img src="<?php echo get_template_directory_uri(); ?>/images/head-follow-ghub.svg" alt="Follow @matium"></a>				
-					<a class="sns-follow-btn follow-feedly" href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2F365letters.tokyo%2Ffeed%2F" title="Add Feedly" target="blank"><img src="<?php echo get_template_directory_uri(); ?>/images/head-follow-feedly.svg" alt="Add Feedly"></a>
+					<a class="sns-follow-btn follow-fb" href="https://www.facebook.com/matium.fb" title="Follow Facebook Page" target="blank"><img src="<?php echo get_template_directory_uri(); ?>/images/head-follow-fb.svg" alt="Follow Facebook Page"></a>
+					<a class="sns-follow-btn follow-tw" href="https://twitter.com/matium" title="Follow @matium" target="blank"><img src="<?php echo get_template_directory_uri(); ?>/images/head-follow-tw.svg" alt="Follow @matium"></a>
+					<a class="sns-follow-btn follow-ghub" href="https://github.com/matium" title="Follow @matium" target="blank"><img src="<?php echo get_template_directory_uri(); ?>/images/head-follow-ghub.svg" alt="Follow @matium"></a>
+					<a class="sns-follow-btn follow-feedly" href="https://feedly.com/i/subscription/feed/http://play.matium.jp/feed" title="Add Feedly" target="blank"><img src="<?php echo get_template_directory_uri(); ?>/images/head-follow-feedly.svg" alt="Add Feedly"></a>
 				</nav>
 				<a class="search-button" href="javascript:void(0);" title="検索する"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-search.svg" alt="検索する"></a>
 

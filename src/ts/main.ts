@@ -1,11 +1,14 @@
 /// <reference path="libs/jquery.d.ts" />
+/// <reference path="libs/jquery.waypoints/jquery.waypoints.d.ts" />
 /// <reference path="matiumpg/backtotop/BackToTop.ts" />
 /// <reference path="matiumpg/searchform/SearchFormUnit.ts" />
+/// <reference path="matiumpg/smp/SMPHeader.ts" />
 
 namespace matiumpg {
 
 	import BackToTop = matiumpg.backtotop.BackToTop;
 	import SearchFormUnit = matiumpg.searchform.SearchFormUnit;
+	import SMPHeader = matiumpg.smp.SMPHeader;
 
 	export class Main {
 
@@ -22,6 +25,10 @@ namespace matiumpg {
 		 * 検索フォーム
 		 **/
 		public searchForm: SearchFormUnit;
+		/**
+		 * スマートフォン表示用ヘッダー
+		 */
+		public smpHeader: SMPHeader;
 
 		////// Private Properties: /////////////////////////
 		protected resizeTimer;
@@ -29,10 +36,10 @@ namespace matiumpg {
 		
 
 		constructor() {
-			console.log("Main Construct");
 			this.backButton = new BackToTop();
 			this.searchButton = $('.search-button');
 			this.searchForm = new SearchFormUnit();
+			this.smpHeader = new SMPHeader();
 		}
 
 		/**
@@ -41,10 +48,11 @@ namespace matiumpg {
 		 * コンポーネント等のセッティングをする
 		 **/
 		init = ():void => {
+
 			this.resize();
 
 			// リサイズ処理
-			var resizeInterval: number = 30;
+			let resizeInterval: number = 30;
 			window.addEventListener('resize', () => {
 				clearTimeout(this.resizeTimer);
 				this.resizeTimer = setTimeout(this.resize, resizeInterval);
@@ -52,19 +60,27 @@ namespace matiumpg {
 			});
 			this.resize();
 
-			// スクロール量でTOPに戻るボタンの表示・非表示
-			var ref: Main = this;
-			$(window).scroll(function(){
-				if ($(this).scrollTop() > 300) {
-					ref.backButton.show();
-				} else {
-					ref.backButton.hide();
-				}
+			$('.contents-main').waypoint({
+				handler: (direction) => {
+					if (direction == 'down') {
+						this.backButton.show();
+					}
+					else {
+						this.backButton.hide();
+					}
+				},
+				offset: 0
 			});
 
-			this.searchButton.on('mouseover', ()=>{
-				this.searchForm.show();
-			});
+			if (isPC) {
+				// PC表示の時は検索ボタンを表示
+				this.searchButton.on('mouseover', ()=>{
+					this.searchForm.show();
+				});
+			} else {
+				// SMP用ヘッダーを有効化
+				this.smpHeader.init();
+			}
 		}
 
 		/* リサイズメソッド */
@@ -77,24 +93,51 @@ namespace matiumpg {
 }
 
 
-var winWidth: number;
-var winHeight: number;
-var main: matiumpg.Main;
+let winWidth: number;
+let winHeight: number;
+let main: matiumpg.Main;
+
+// デバイス判定
+let isSP: boolean = false;
+let isTB: boolean = false;
+let isPC: boolean = true;
 
 /* DOMが構築された時点で実行 */
 $(document).ready(function() {
-	console.log("Build DOM");
 	jQuery.fx.interval = 10;
 	winWidth = window.innerWidth;
 	winHeight = window.innerHeight;
+	setDeviceWidthFlag();
 	main = new matiumpg.Main();
 	main.init();
 });
 
 /* ページの構成要素がすべてロードされた時点で実行 */
 $(window).load(function() {
-	console.log("Loaded Page Contents");
 });
+
+/**
+ * ウィンドウサイズによるデバイス判定
+ */
+function setDeviceWidthFlag() {
+	if (winWidth < 1024) {
+		if (winWidth < 768) {
+			isSP = true;
+			isTB = false;
+			isPC = false;
+		}
+		else {
+			isSP = false;
+			isTB = true;
+			isPC = false;
+		}
+	}
+	else {
+		isSP = false;
+		isTB = false;
+		isPC = true;
+	}
+}
 
 
 
